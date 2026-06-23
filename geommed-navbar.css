@@ -1,0 +1,353 @@
+/* Evita que padding y bordes alteren el tamaño de los elementos */
+.geommed-navbar,
+.geommed-navbar * {
+    box-sizing: border-box;
+}
+
+/* =========================
+   CONTENEDOR GENERAL
+========================== */
+
+.geommed-navbar {
+    position: relative;
+    width: 100%;
+    min-height: 80px;
+
+    background-color: #ffffff;
+    border-bottom: 2px solid #6bb91a;
+
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+/* =========================
+   ESCRITORIO
+========================== */
+
+.geommed-navbar__desktop {
+    width: 100%;
+    max-width: 1180px;
+    min-height: 80px;
+
+    margin: 0 auto;
+    padding: 0 24px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 30px;
+}
+
+.geommed-brand {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+
+    flex-shrink: 0;
+
+    color: inherit;
+    text-decoration: none !important;
+}
+
+.geommed-brand__logo {
+    display: block;
+
+    width: 68px;
+    height: 68px;
+
+    object-fit: contain;
+}
+
+.geommed-brand__text {
+    display: flex;
+    flex-direction: column;
+}
+
+.geommed-brand__title {
+    margin: 0;
+
+    color: #6bb91a;
+    font-size: 22px;
+    font-weight: 700;
+    line-height: 1.1;
+}
+
+.geommed-brand__description {
+    margin-top: 4px;
+
+    color: #000000;
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 1.2;
+}
+
+.geommed-navbar__links {
+    align-self: stretch;
+
+    display: flex;
+    align-items: stretch;
+    justify-content: flex-end;
+
+    min-width: 0;
+}
+
+.geommed-navbar__link {
+    position: relative;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 0 13px;
+
+    color: #222222 !important;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 1.2;
+    white-space: nowrap;
+    text-decoration: none !important;
+
+    border-bottom: 4px solid transparent !important;
+
+    transition:
+        color 0.2s ease,
+        border-color 0.2s ease,
+        background-color 0.2s ease;
+}
+
+.geommed-navbar__link:hover,
+.geommed-navbar__link:focus {
+    color: #6bb91a !important;
+    border-bottom-color: #6bb91a !important;
+    background-color: #f8f8f8;
+}
+
+.geommed-navbar__link--active {
+    color: #6bb91a !important;
+    border-bottom-color: #6bb91a !important;
+}
+
+/* La versión móvil permanece oculta en escritorio */
+.geommed-navbar__mobile {
+    display: none;
+}
+
+/* =========================
+   TABLET
+========================== */
+
+@media screen and (max-width: 1050px) {
+    .geommed-navbar__desktop {
+        padding: 0 18px;
+        gap: 16px;
+    }
+
+    .geommed-brand__logo {
+        width: 58px;
+        height: 58px;
+    }
+
+    .geommed-brand__title {
+        font-size: 20px;
+    }
+
+    .geommed-brand__description {
+        font-size: 11px;
+    }
+
+    .geommed-navbar__link {
+        padding: 0 9px;
+        font-size: 13px;
+    }
+}
+
+/* =========================
+   MÓVIL
+========================== */
+
+@media screen and (max-width: 850px) {
+    .geommed-navbar {
+        min-height: 66px;
+    }
+
+    /* Oculta el encabezado horizontal */
+    .geommed-navbar__desktop {
+        display: none;
+    }
+
+    /* Muestra el desplegable móvil */
+    .geommed-navbar__mobile {
+        display: block;
+        width: 100%;
+    }
+
+    /* Elimina el marcador nativo de details */
+    .geommed-mobile__button {
+        width: 100%;
+        min-height: 66px;
+
+        padding: 8px 18px;
+
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 16px;
+
+        color: #111111;
+        background-color: #ffffff;
+
+        cursor: pointer;
+        list-style: none;
+        user-select: none;
+    }
+
+    .geommed-mobile__button::-webkit-details-marker {
+        display: none;
+    }
+
+    .geommed-mobile__button::marker {
+        display: none;
+        content: "";
+    }
+
+    .geommed-mobile__header {
+        display: flex;
+        align-items: center;
+        gap: 11px;
+
+        min-width: 0;
+    }
+
+    .geommed-mobile__logo {
+        display: block;
+
+        width: 48px;
+        height: 48px;
+
+        flex-shrink: 0;
+        object-fit: contain;
+    }
+
+    .geommed-mobile__text {
+        display: flex;
+        flex-direction: column;
+
+        min-width: 0;
+    }
+
+    .geommed-mobile__title {
+        color: #6bb91a;
+        font-size: 18px;
+        font-weight: 700;
+        line-height: 1.1;
+    }
+
+    .geommed-mobile__description {
+        margin-top: 3px;
+
+        color: #222222;
+        font-size: 11px;
+        line-height: 1.2;
+    }
+
+    /* Flecha hecha únicamente con CSS */
+    .geommed-mobile__arrow {
+        width: 10px;
+        height: 10px;
+
+        flex-shrink: 0;
+
+        border-right: 2px solid #555555;
+        border-bottom: 2px solid #555555;
+
+        transform: rotate(45deg);
+        transition: transform 0.2s ease;
+    }
+
+    /* Gira la flecha cuando el details está abierto */
+    .geommed-navbar__mobile[open] .geommed-mobile__arrow {
+        transform: rotate(225deg);
+    }
+
+    .geommed-mobile__menu {
+        position: absolute;
+        z-index: 1000;
+        top: 100%;
+        left: 0;
+
+        width: 100%;
+
+        display: flex;
+        flex-direction: column;
+
+        background-color: #ffffff;
+        border-top: 1px solid #eeeeee;
+        border-bottom: 2px solid #6bb91a;
+
+        box-shadow: 0 5px 12px rgba(0, 0, 0, 0.15);
+    }
+
+    .geommed-mobile__link {
+        display: block;
+
+        width: 100%;
+        padding: 14px 22px;
+
+        color: #222222 !important;
+        background-color: #ffffff;
+
+        font-size: 14px;
+        font-weight: 500;
+        line-height: 1.3;
+        text-decoration: none !important;
+
+        border-left: 4px solid transparent;
+        border-bottom: 1px solid #eeeeee;
+
+        transition:
+            color 0.2s ease,
+            background-color 0.2s ease,
+            border-color 0.2s ease;
+    }
+
+    .geommed-mobile__link:last-child {
+        border-bottom: 0;
+    }
+
+    .geommed-mobile__link:hover,
+    .geommed-mobile__link:focus {
+        color: #6bb91a !important;
+        background-color: #f5f5f5;
+        border-left-color: #6bb91a;
+    }
+
+    .geommed-mobile__link--active {
+        color: #6bb91a !important;
+        font-weight: 700;
+        background-color: #f7f7f7;
+        border-left-color: #6bb91a;
+    }
+}
+
+/* =========================
+   PANTALLAS MUY PEQUEÑAS
+========================== */
+
+@media screen and (max-width: 380px) {
+    .geommed-mobile__button {
+        padding-right: 14px;
+        padding-left: 14px;
+    }
+
+    .geommed-mobile__logo {
+        width: 42px;
+        height: 42px;
+    }
+
+    .geommed-mobile__title {
+        font-size: 16px;
+    }
+
+    .geommed-mobile__description {
+        font-size: 10px;
+    }
+}
